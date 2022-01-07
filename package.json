@@ -1,0 +1,22 @@
+{
+  "name": "merida",
+  "version": "1.0.0",
+  "description": "simple error/warn color highlighting for node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LunarTwilight/merida.git"
+  },
+  "author": "Chemie~",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/LunarTwilight/merida/issues"
+  },
+  "homepage": "https://github.com/LunarTwilight/merida#readme",
+  "dependencies": {
+    "ansi-colors": "^4.1.1"
+  }
+}
