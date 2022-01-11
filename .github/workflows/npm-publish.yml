@@ -33,7 +33,7 @@ jobs:
         env:
           RESULT: ${{ steps.release.outputs.released }}
         run: |
-          if [[ $RESULT == 'true']]; then
+          if [[ $RESULT == true]]; then
             echo "::set-output name=continue::true"
           else
             echo "::set-output name=contiune::false"
