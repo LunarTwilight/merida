@@ -6,7 +6,6 @@ on:
 
 jobs:
   release:
-    outputs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
