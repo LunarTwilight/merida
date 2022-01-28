@@ -3,20 +3,47 @@ const colors = require('ansi-colors');
 /* Inject red color for first line of error */
 const originalConsoleError = console.error;
 const error = (...args) => {
-    const error = (args[0].stack ? args[0].stack : args[0]).split('\n');
-    error[0] = colors.red(error[0]);
-    if (args.response) {
-        return originalConsoleError.call(console, error.join('\n'), args.response);
+    if (!args[0]) {
+        return originalConsoleError.call(console, args);
     }
-    return originalConsoleError.call(console, error.join('\n'));
+    try {
+        const error = (args[0]?.stack).split('\n');
+        error[0] = colors.red(error[0]);
+        if (args.response) {
+            return originalConsoleError.call(console, error.join('\n'), args.response);
+        }
+        return originalConsoleError.call(console, error.join('\n'));
+    } catch {
+        try {
+            const error = colors.red(args[0]?.stack);
+            if (args.response) {
+                return originalConsoleError.call(console, error, args.response);
+            }
+            return originalConsoleError.call(console, error);
+        } catch {
+            return originalConsoleError.call(console, args);
+        }
+    }
 }
 
 /* Color first line of warning yellow (maybe would be fine just coloring the whole thing yellow?) */
 const originalConsoleWarn = console.warn;
 const warn = (...args) => {
-    const warning = args[0].split('\n');
-    warning[0] = colors.yellow(warning[0]);
-    return originalConsoleWarn.call(console, warning.join('\n'));
+    if (!args[0]) {
+        return originalConsoleWarn.call(console, args);
+    }
+    try {
+        const warning = args[0].split('\n');
+        warning[0] = colors.yellow(warning[0]);
+        return originalConsoleWarn.call(console, warning.join('\n'));
+    } catch {
+        try {
+            const warning = colors.yellow(args[0]);
+            return originalConsoleWarn.call(console, warning);
+        } catch {
+            return originalConsoleWarn.class(console, args);
+        }
+    }
 }
 
 /* Export as functions for importing */
