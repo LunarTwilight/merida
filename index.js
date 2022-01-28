@@ -4,7 +4,7 @@ const colors = require('ansi-colors');
 const originalConsoleError = console.error;
 const error = (...args) => {
     if (!args[0]) {
-        return originalConsoleError.call(console, args);
+        return originalConsoleError.call(console, ...args);
     }
     try {
         const error = (args[0]?.stack).split('\n');
@@ -21,7 +21,7 @@ const error = (...args) => {
             }
             return originalConsoleError.call(console, error);
         } catch {
-            return originalConsoleError.call(console, args);
+            return originalConsoleError.call(console, ...args);
         }
     }
 }
@@ -30,7 +30,7 @@ const error = (...args) => {
 const originalConsoleWarn = console.warn;
 const warn = (...args) => {
     if (!args[0]) {
-        return originalConsoleWarn.call(console, args);
+        return originalConsoleWarn.call(console, ...args);
     }
     try {
         const warning = args[0].split('\n');
@@ -41,7 +41,7 @@ const warn = (...args) => {
             const warning = colors.yellow(args[0]);
             return originalConsoleWarn.call(console, warning);
         } catch {
-            return originalConsoleWarn.class(console, args);
+            return originalConsoleWarn.class(console, ...args);
         }
     }
 }
