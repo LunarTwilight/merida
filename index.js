@@ -3,7 +3,7 @@ const colors = require('ansi-colors');
 /* Inject red color for first line of error */
 const originalConsoleError = console.error;
 const error = (...args) => {
-    if (!args[0]) {
+    if (!args[0] || typeof args[0] !== 'string') {
         return originalConsoleError.call(console, ...args);
     }
     try {
@@ -29,7 +29,7 @@ const error = (...args) => {
 /* Color first line of warning yellow (maybe would be fine just coloring the whole thing yellow?) */
 const originalConsoleWarn = console.warn;
 const warn = (...args) => {
-    if (!args[0]) {
+    if (!args[0] || typeof args[0] !== 'string') {
         return originalConsoleWarn.call(console, ...args);
     }
     try {
