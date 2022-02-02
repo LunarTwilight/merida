@@ -41,7 +41,7 @@ const warn = (...args) => {
             const warning = colors.yellow(args[0]);
             return originalConsoleWarn.call(console, warning);
         } catch {
-            return originalConsoleWarn.class(console, ...args);
+            return originalConsoleWarn.call(console, ...args);
         }
     }
 }
