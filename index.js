@@ -7,7 +7,7 @@ const error = (...args) => {
         return originalConsoleError.call(console, ...args);
     }
     try {
-        const error = (args[0]?.stack).split('\n');
+        const error = (args[0].stack || args[0]).split('\n');
         error[0] = colors.red(error[0]);
         if (args.response) {
             return originalConsoleError.call(console, error.join('\n'), args.response);
@@ -15,7 +15,7 @@ const error = (...args) => {
         return originalConsoleError.call(console, error.join('\n'));
     } catch {
         try {
-            const error = colors.red(args[0]?.stack);
+            const error = colors.red((args[0].stack || args[0]));
             if (args.response) {
                 return originalConsoleError.call(console, error, args.response);
             }
