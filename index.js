@@ -24,7 +24,7 @@ const error = (...args) => {
             return originalConsoleError.call(console, ...args);
         }
     }
-}
+};
 
 /* Color first line of warning yellow (maybe would be fine just coloring the whole thing yellow?) */
 const originalConsoleWarn = console.warn;
@@ -44,7 +44,7 @@ const warn = (...args) => {
             return originalConsoleWarn.call(console, ...args);
         }
     }
-}
+};
 
 /* Export as functions for importing */
 module.exports.warn = warn;
@@ -54,4 +54,4 @@ module.exports.error = error;
 module.exports.init = () => {
     console.warn = warn;
     console.error = error;
-}
+};
