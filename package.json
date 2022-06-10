@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/LunarTwilight/merida#readme",
   "dependencies": {
-    "ansi-colors": "^4.1.1"
+    "ansi-colors": "^4.1.3"
   }
 }
