@@ -1,6 +1,6 @@
 {
   "name": "merida",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "simple error/warn color highlighting for node",
   "main": "index.js",
   "scripts": {
